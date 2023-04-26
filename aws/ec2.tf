@@ -17,8 +17,8 @@ resource "aws_instance" "skytech-staging" {
   key_name               = aws_key_pair.key_skytech.key_name
   vpc_security_group_ids = [aws_security_group.web_sg.id]
   subnet_id              = aws_subnet.private_subnet.id
-
+  count                  = 2
   tags = {
-    Name = "ubuntu-instance-staging"
+      Name = count.index == 0 ? "ubunut-skytech-staging" : "ubuntu-skytech-production"
   }
 }
