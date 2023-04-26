@@ -3,3 +3,7 @@ resource "aws_eip" "lb" {
   vpc                       = true
   associate_with_private_ip = aws_instance.skytech-bastion.private_ip
 }
+
+resource "aws_eip" "nat_eip" {
+  vpc                       = true
+}
